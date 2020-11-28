@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7633bd05-1e63-4649-b40b-ecd9c7be8cfa" name="Default Changelist" comment="" />
+    <list default="true" id="7633bd05-1e63-4649-b40b-ecd9c7be8cfa" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/status.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,6 +20,9 @@
         <option value="TypeScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/index.ts" root0="SKIP_INSPECTION" />
@@ -26,6 +36,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../jupyterlab/jupyterlab-2.2.0" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -59,6 +70,19 @@
       <workItem from="1605345778138" duration="2406000" />
       <workItem from="1605359163517" duration="79000" />
       <workItem from="1605359379483" duration="875000" />
+      <workItem from="1605685400549" duration="4047000" />
+      <workItem from="1605874167483" duration="7813000" />
+      <workItem from="1605885794008" duration="62000" />
+      <workItem from="1605924058060" duration="3194000" />
+      <workItem from="1606204530809" duration="1461000" />
+      <workItem from="1606219149244" duration="1851000" />
+      <workItem from="1606270628634" duration="14180000" />
+      <workItem from="1606306006849" duration="3557000" />
+      <workItem from="1606317234557" duration="4015000" />
+      <workItem from="1606358727820" duration="13392000" />
+      <workItem from="1606474830795" duration="7678000" />
+      <workItem from="1606483647360" duration="1051000" />
+      <workItem from="1606525023982" duration="6790000" />
     </task>
     <servers />
   </component>
@@ -66,16 +90,16 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1605359483956">
+    <state x="690" y="218" key="FileChooserDialogImpl" timestamp="1606525479751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604109461386" />
-    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605359483956" />
-    <state x="574" y="193" width="961" height="738" key="find.popup" timestamp="1605356188374">
+    <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606525479751" />
+    <state x="574" y="193" width="961" height="738" key="find.popup" timestamp="1606477341197">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="574" y="193" width="899" height="654" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604112249325" />
-    <state x="574" y="193" width="961" height="738" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605356188374" />
+    <state x="574" y="193" width="961" height="738" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606477341197" />
     <state x="532" y="-5" width="840" height="1032" key="search.everywhere.popup" timestamp="1604568997798">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -45,7 +45,9 @@
     "@jupyterlab/nbformat": "",
     "@lumino/domutils": "",
     "@jupyterlab/codemirror": "",
-    "@types/codemirror": "^0.0.76"
+    "@types/codemirror": "^0.0.76",
+    "@lumino/signaling": "",
+    "@lumino/algorithm": ""
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.25.0",
