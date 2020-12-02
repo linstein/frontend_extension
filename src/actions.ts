@@ -38,6 +38,8 @@ export namespace CommandIDs {
     export const insertcodeBelow = 'notebook:insert-codecell-below-new';
     export const insertmarkdownBelow = 'notebook:insert-markdowncell-below-new';
     export const runall = 'notebook:run-all-cell';
+    export const runandadvance="notebook:run_and_advance"
+    export const runcells="notebook:run_cells"
 }
 
 export namespace NotebookActions {
@@ -307,6 +309,23 @@ export namespace NotebookActions {
         handleRunState(notebook, state, true);
         return promise;
     }
+
+    export function run(
+      comm:Kernel.IComm | null,
+    notebook: Notebook,
+    sessionContext?: ISessionContext,
+
+  ): Promise<boolean>|null {
+    if (!notebook.model || !notebook.activeCell) {
+      return Promise.resolve(false);
+    }
+
+    const state = getState(notebook);
+    const promise = runSelected(comm,notebook, sessionContext);
+
+    handleRunState(notebook, state, false);
+    return promise;
+  }
 
 }
 
