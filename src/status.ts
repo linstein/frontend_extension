@@ -118,9 +118,7 @@ export class NotebookStatus {
                             }
                             return true
                         });
-                        console.log("hook set hook000000000000000");
                         this.on_execute = true;
-                        console.log("zhixing");
                         this.execute_cellid.push(cellid);
                         console.log(this.execute_cellid);
                         this.multi_runcell.push(cellid);

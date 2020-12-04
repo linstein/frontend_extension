@@ -32,6 +32,7 @@ import {
 /**
  * Initialization data for the try extension.
  */
+var panel_status: NotebookStatus[]=[];
 const extension: JupyterFrontEndPlugin<void> = {
     id: 'try',
     autoStart: true,
@@ -40,10 +41,10 @@ const extension: JupyterFrontEndPlugin<void> = {
         app: JupyterFrontEnd,
         notebooks: INotebookTracker,
     ): void => {
-        const panel_status={ NotebookPanel : NotebookStatus};
         app.commands.addCommand(CommandIDs.runcells, {
                 label: 'Run selected cells',
                 execute: args => {
+                console.log('Shift L')
                 const current = getCurrent(args);
                 const status=getStatus(current);
                   if (current.content) {
@@ -54,13 +55,14 @@ const extension: JupyterFrontEndPlugin<void> = {
             // Set enter key for console completer select command.
             app.commands.addKeyBinding({
               command: CommandIDs.runcells,
-              keys: ['Ctrl Enter'],
+              keys: ['Ctrl L'],
               selector: '.jp-Notebook'
             });
 
             app.commands.addCommand(CommandIDs.runandadvance,{
                 label: 'Run selected cells and advance',
                 execute: args => {
+                console.log('Shift O')
                 const current = getCurrent(args);
                 const status=getStatus(current);
                   if (current) {
@@ -71,7 +73,7 @@ const extension: JupyterFrontEndPlugin<void> = {
             // Set enter key for console completer select command.
             app.commands.addKeyBinding({
               command: CommandIDs.runandadvance,
-              keys: ['Shift Enter'],
+              keys: ['Shift O'],
               selector: '.jp-Notebook'
             });
 
@@ -86,16 +88,16 @@ const extension: JupyterFrontEndPlugin<void> = {
         }
 
         function getStatus(panel: NotebookPanel):  NotebookStatus | null{
-            // @ts-ignore
-            const status=panel_status[panel];
+            const status=panel_status.find(x => x.panel === panel) as NotebookStatus;
+            console.log(panel_status.length)
             return status
         }
 
         notebooks.widgetAdded.connect((sender, panel) => {
             console.log('JupyterLab extension try is activated!');
-            let notebook_status = new NotebookStatus(panel);
-            // @ts-ignore
-            panel_status[panel]=notebook_status
+            const notebook_status = new NotebookStatus(panel);
+            panel_status.push(notebook_status);
+            console.log(panel_status.length)
             //清空原toolbar下的按键，绑定新的按键以及命令
             let i = 0;
             while (i < 10) {
@@ -324,8 +326,6 @@ const extension: JupyterFrontEndPlugin<void> = {
                 return -1;
               }
 
-
-
             //给activecell绑定事件
             let onActiveCellChanged = () => {
                 console.log("onActiveCellChanged---------------------------------------")
@@ -372,7 +372,8 @@ const extension: JupyterFrontEndPlugin<void> = {
                     if (cell.model.metadata.get('id')) {
                         cellid = cell.model.metadata.get('id')!.toString();
                     }
-                    const sendx = {'cellid': cellid, 'func': 'sync', 'spec': 'unlockcell'};
+                    const cellcontent=cell.model.metadata;
+                    const sendx = {'cellid': cellid, 'func': 'sync', 'spec': 'unlockcell',"cellcontent":cellcontent.toString(),"path": "Context.path"};
                     notebook_status.comm!.send(sendx);
                     Object.assign(cell!.node.style, {background: '#F7EED6'});
                     cell.editor.host.style.background = '#F7EED6';
