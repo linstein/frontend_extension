@@ -10,7 +10,7 @@ import {
     NotebookPanel
 } from '@jupyterlab/notebook';
 
-import {CommandIDs, NotebookActions, getCookie,createKernelInfo} from "./actions"
+import {CommandIDs, NotebookActions, getCookie, createKernelInfo} from "./actions"
 import {Session} from '@jupyterlab/services';
 import {
     ToolbarButton
@@ -29,6 +29,8 @@ import * as nbformat from '@jupyterlab/nbformat';
 import {
   ReadonlyPartialJSONObject
 } from '@lumino/coreutils';
+
+// import {CommandRegistry} from '@lumino/commands';
 /**
  * Initialization data for the try extension.
  */
@@ -41,10 +43,15 @@ const extension: JupyterFrontEndPlugin<void> = {
         app: JupyterFrontEnd,
         notebooks: INotebookTracker,
     ): void => {
+        // let command1= app.commands.keyBindings.find(x => x.command === "notebook-cells:run-and-advance" ) as CommandRegistry.IKeyBinding;
+        // ArrayExt.removeFirstOf(app.commands.keyBindings as CommandRegistry.IKeyBinding[], command1);
+        // let command2= app.commands.keyBindings.find(x => x.command === "notebook-cells:run-cell" ) as CommandRegistry.IKeyBinding;
+        // ArrayExt.removeFirstOf(app.commands.keyBindings as CommandRegistry.IKeyBinding[], command2);
+
         app.commands.addCommand(CommandIDs.runcells, {
                 label: 'Run selected cells',
                 execute: args => {
-                console.log('Shift L')
+                console.log('Shift Enter')
                 const current = getCurrent(args);
                 const status=getStatus(current);
                   if (current.content) {
@@ -107,7 +114,7 @@ const extension: JupyterFrontEndPlugin<void> = {
             const codebutton = new ToolbarButton({
                 icon: addIcon,
                 onClick: () => {
-                    NotebookActions.insertBelow(panel.content, 'markdown', notebook_status.comm);
+                    NotebookActions.insertBelow(panel, 'markdown', notebook_status.comm);
                 },
                 tooltip: 'Insert a markdown cell below'
             });
@@ -120,7 +127,7 @@ const extension: JupyterFrontEndPlugin<void> = {
             const markdownbutton = new ToolbarButton({
                 icon: addIcon,
                 onClick: () => {
-                    NotebookActions.insertBelow(panel.content, 'code', notebook_status.comm);
+                    NotebookActions.insertBelow(panel, 'code', notebook_status.comm);
                 },
                 tooltip: 'Insert a code cell below'
             });
@@ -250,14 +257,14 @@ const extension: JupyterFrontEndPlugin<void> = {
                                 model.cells.move(fromIndex, toIndex);
                                 //send(msg)
                                 console.log("move down");
-                                dragcellMsg(fromIndex, toIndex)
+                                dragcellMsg(fromIndex, toIndex,panel.context.path)
                             });
                         } else if (fromIndex > toIndex) {
                             each(toMove, cellWidget => {
                                 model.cells.move(fromIndex++, toIndex++);
                                 //send(msg)
                                 console.log("move up");
-                                dragcellMsg(fromIndex-1, toIndex-1)
+                                dragcellMsg(fromIndex-1, toIndex-1,panel.context.path)
                             });
                         }
                         model.cells.endCompoundOperation();
@@ -299,11 +306,10 @@ const extension: JupyterFrontEndPlugin<void> = {
                     }
 
                 }
-
             }
 
-            function dragcellMsg(from: number, to: number) {
-                const sendx = {'cellid': '', "from": from, "to": to, 'func': 'sync', 'spec': 'drag_cell'};
+            function dragcellMsg(from: number, to: number,path: string) {
+                const sendx = {'cellid': '', "from": from, "to": to, 'func': 'sync', 'spec': 'drag_cell',"cellcontent": "n","path": path};
                 notebook_status.comm!.send(sendx)
             };
             function findCell(node: HTMLElement): number {
@@ -372,8 +378,8 @@ const extension: JupyterFrontEndPlugin<void> = {
                     if (cell.model.metadata.get('id')) {
                         cellid = cell.model.metadata.get('id')!.toString();
                     }
-                    const cellcontent=cell.model.metadata;
-                    const sendx = {'cellid': cellid, 'func': 'sync', 'spec': 'unlockcell',"cellcontent":cellcontent.toString(),"path": "Context.path"};
+                    const cellcontent=cell.model;
+                    const sendx = {'cellid': cellid, 'func': 'sync', 'spec': 'unlockcell',"cellcontent":cellcontent.toJSON(),"path": panel.context.path};
                     notebook_status.comm!.send(sendx);
                     Object.assign(cell!.node.style, {background: '#F7EED6'});
                     cell.editor.host.style.background = '#F7EED6';

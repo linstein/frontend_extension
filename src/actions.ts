@@ -23,7 +23,8 @@ import {Signal} from '@lumino/signaling';
 import {ArrayExt, toArray} from '@lumino/algorithm';
 
 import {
-    Notebook
+    Notebook,
+    NotebookPanel
 } from '@jupyterlab/notebook';
 
 import {
@@ -51,18 +52,19 @@ export namespace NotebookActions {
     /**
      * Insert a new code cell below the active cell.
      *
-     * @param notebook - The target notebook widget.
      *
      * #### Notes
      * The widget mode will be preserved.
      * This action can be undone.
      * The existing selection will be cleared.
      * The new cell will be the active cell.
+     * @param panel
      * @param cellType
      * @param comm
      */
-    export function insertBelow(notebook: Notebook, cellType: nbformat.CellType = "code", comm: Kernel.IComm | null): void {
+    export function insertBelow(panel: NotebookPanel, cellType: nbformat.CellType = "code", comm: Kernel.IComm | null): void {
         console.debug('insertbelow');
+        const notebook=panel.content;
         if (!notebook.model || !notebook.activeCell) {
             return;
         }
@@ -82,7 +84,9 @@ export namespace NotebookActions {
             "celltype": cellType,
             'index': notebook.activeCellIndex + 1,
             'func': 'sync',
-            'spec': 'createcell'
+            'spec': 'createcell',
+            "cellcontent": cell.toJSON(),
+            "path": panel.context.path
         };
         comm!.send(sendx);
         // Make the newly inserted cell active.

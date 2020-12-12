@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="7633bd05-1e63-4649-b40b-ecd9c7be8cfa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/status.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/status.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +82,9 @@
       <workItem from="1606525023982" duration="38221000" />
       <workItem from="1606744467553" duration="824000" />
       <workItem from="1606875189829" duration="13766000" />
-      <workItem from="1607085676188" duration="4189000" />
+      <workItem from="1607085676188" duration="9528000" />
+      <workItem from="1607133228606" duration="26260000" />
+      <workItem from="1607738161078" duration="1083000" />
     </task>
     <servers />
   </component>
@@ -108,15 +110,15 @@
     </state>
     <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1606876771843" />
     <state x="690" y="218" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1606525479751" />
-    <state x="574" y="193" width="961" height="738" key="find.popup" timestamp="1606477341197">
+    <state x="574" y="193" width="899" height="654" key="find.popup" timestamp="1607161556679">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="574" y="193" width="899" height="654" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604112249325" />
+    <state x="574" y="193" width="899" height="654" key="find.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607161556679" />
     <state x="574" y="193" width="961" height="738" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606477341197" />
-    <state x="532" y="-5" width="840" height="1032" key="search.everywhere.popup" timestamp="1606568792902">
+    <state x="532" y="-5" width="840" height="1032" key="search.everywhere.popup" timestamp="1607160915187">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="532" y="-5" width="838" height="1032" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1604114040598" />
+    <state x="532" y="-5" width="840" height="1032" key="search.everywhere.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1607160915187" />
     <state x="532" y="-5" width="840" height="1032" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1606568792902" />
   </component>
 </project>
